@@ -1,0 +1,259 @@
+services:
+  core-30-2:
+    build:
+      context: .
+      dockerfile: docker/bitcoin-node/Dockerfile
+      args:
+        TARBALL_URL: ${CORE_30_2_TARBALL_URL}
+        TARBALL_SHA256: ${CORE_30_2_TARBALL_SHA256}
+    container_name: core-30-2
+    volumes:
+      - core-30-2-data:/data
+      - ./config/core:/config:ro
+    environment:
+      BITCOIN_ARGS: "-rpcport=18443 -port=18444 -zmqpubrawblock=tcp://0.0.0.0:28332 -zmqpubrawtx=tcp://0.0.0.0:28333"
+    ports:
+      - "18443:18443"
+      - "18444:18444"
+    restart: unless-stopped
+
+  core-29-2:
+    build:
+      context: .
+      dockerfile: docker/bitcoin-node/Dockerfile
+      args:
+        TARBALL_URL: ${CORE_29_2_TARBALL_URL}
+        TARBALL_SHA256: ${CORE_29_2_TARBALL_SHA256}
+    container_name: core-29-2
+    volumes:
+      - core-29-2-data:/data
+      - ./config/core:/config:ro
+    environment:
+      BITCOIN_ARGS: "-rpcport=18445 -port=18446 -addnode=core-30-2:18444 -zmqpubrawblock=tcp://0.0.0.0:28332 -zmqpubrawtx=tcp://0.0.0.0:28333"
+    ports:
+      - "18445:18445"
+      - "18446:18446"
+    restart: unless-stopped
+
+  core-29-0:
+    build:
+      context: .
+      dockerfile: docker/bitcoin-node/Dockerfile
+      args:
+        TARBALL_URL: ${CORE_29_0_TARBALL_URL}
+        TARBALL_SHA256: ${CORE_29_0_TARBALL_SHA256}
+    container_name: core-29-0
+    volumes:
+      - core-29-0-data:/data
+      - ./config/core:/config:ro
+    environment:
+      BITCOIN_ARGS: "-rpcport=18447 -port=18448 -addnode=core-30-2:18444"
+    ports:
+      - "18447:18447"
+      - "18448:18448"
+    restart: unless-stopped
+
+  core-28-1:
+    build:
+      context: .
+      dockerfile: docker/bitcoin-node/Dockerfile
+      args:
+        TARBALL_URL: ${CORE_28_1_TARBALL_URL}
+        TARBALL_SHA256: ${CORE_28_1_TARBALL_SHA256}
+    container_name: core-28-1
+    volumes:
+      - core-28-1-data:/data
+      - ./config/core:/config:ro
+    environment:
+      BITCOIN_ARGS: "-rpcport=18449 -port=18450 -addnode=core-30-2:18444"
+    ports:
+      - "18449:18449"
+      - "18450:18450"
+    restart: unless-stopped
+
+  core-27-1:
+    build:
+      context: .
+      dockerfile: docker/bitcoin-node/Dockerfile
+      args:
+        TARBALL_URL: ${CORE_27_1_TARBALL_URL}
+        TARBALL_SHA256: ${CORE_27_1_TARBALL_SHA256}
+    container_name: core-27-1
+    volumes:
+      - core-27-1-data:/data
+      - ./config/core:/config:ro
+    environment:
+      BITCOIN_ARGS: "-rpcport=18451 -port=18452 -addnode=core-30-2:18444"
+    ports:
+      - "18451:18451"
+      - "18452:18452"
+    restart: unless-stopped
+
+  core-27-0:
+    build:
+      context: .
+      dockerfile: docker/bitcoin-node/Dockerfile
+      args:
+        TARBALL_URL: ${CORE_27_0_TARBALL_URL}
+        TARBALL_SHA256: ${CORE_27_0_TARBALL_SHA256}
+    container_name: core-27-0
+    volumes:
+      - core-27-0-data:/data
+      - ./config/core:/config:ro
+    environment:
+      BITCOIN_ARGS: "-rpcport=18453 -port=18454 -addnode=core-30-2:18444"
+    ports:
+      - "18453:18453"
+      - "18454:18454"
+    restart: unless-stopped
+
+  core-26-0:
+    build:
+      context: .
+      dockerfile: docker/bitcoin-node/Dockerfile
+      args:
+        TARBALL_URL: ${CORE_26_0_TARBALL_URL}
+        TARBALL_SHA256: ${CORE_26_0_TARBALL_SHA256}
+    container_name: core-26-0
+    volumes:
+      - core-26-0-data:/data
+      - ./config/core:/config:ro
+    environment:
+      BITCOIN_ARGS: "-rpcport=18455 -port=18456 -addnode=core-30-2:18444"
+    ports:
+      - "18455:18455"
+      - "18456:18456"
+    restart: unless-stopped
+
+  core-25-1:
+    build:
+      context: .
+      dockerfile: docker/bitcoin-node/Dockerfile
+      args:
+        TARBALL_URL: ${CORE_25_1_TARBALL_URL}
+        TARBALL_SHA256: ${CORE_25_1_TARBALL_SHA256}
+    container_name: core-25-1
+    volumes:
+      - core-25-1-data:/data
+      - ./config/core:/config:ro
+    environment:
+      BITCOIN_ARGS: "-rpcport=18457 -port=18458 -addnode=core-30-2:18444"
+    ports:
+      - "18457:18457"
+      - "18458:18458"
+    restart: unless-stopped
+
+  knots-29-2-20251110:
+    build:
+      context: .
+      dockerfile: docker/bitcoin-node/Dockerfile
+      args:
+        TARBALL_URL: ${KNOTS_29_2_20251110_TARBALL_URL}
+        TARBALL_SHA256: ${KNOTS_29_2_20251110_TARBALL_SHA256}
+    container_name: knots-29-2-20251110
+    volumes:
+      - knots-29-2-20251110-data:/data
+      - ./config/knots:/config:ro
+    environment:
+      BITCOIN_ARGS: "-rpcport=18459 -port=18460 -addnode=core-30-2:18444"
+    ports:
+      - "18459:18459"
+      - "18460:18460"
+    restart: unless-stopped
+
+  knots-29-1-20250903:
+    build:
+      context: .
+      dockerfile: docker/bitcoin-node/Dockerfile
+      args:
+        TARBALL_URL: ${KNOTS_29_1_20250903_TARBALL_URL}
+        TARBALL_SHA256: ${KNOTS_29_1_20250903_TARBALL_SHA256}
+    container_name: knots-29-1-20250903
+    volumes:
+      - knots-29-1-20250903-data:/data
+      - ./config/knots:/config:ro
+    environment:
+      BITCOIN_ARGS: "-rpcport=18461 -port=18462 -addnode=core-30-2:18444 -zmqpubrawblock=tcp://0.0.0.0:28332 -zmqpubrawtx=tcp://0.0.0.0:28333"
+    ports:
+      - "18461:18461"
+      - "18462:18462"
+    restart: unless-stopped
+
+  knots-28-1-20250305:
+    build:
+      context: .
+      dockerfile: docker/bitcoin-node/Dockerfile
+      args:
+        TARBALL_URL: ${KNOTS_28_1_20250305_TARBALL_URL}
+        TARBALL_SHA256: ${KNOTS_28_1_20250305_TARBALL_SHA256}
+    container_name: knots-28-1-20250305
+    volumes:
+      - knots-28-1-20250305-data:/data
+      - ./config/knots:/config:ro
+    environment:
+      BITCOIN_ARGS: "-rpcport=18463 -port=18464 -addnode=core-30-2:18444"
+    ports:
+      - "18463:18463"
+      - "18464:18464"
+    restart: unless-stopped
+
+  lnd-core-30-2:
+    image: lightninglabs/lnd:${LND_VERSION}
+    container_name: lnd-core-30-2
+    depends_on:
+      - core-30-2
+    volumes:
+      - lnd-core-30-2-data:/data
+      - ./config/lnd/core-30-2:/config:ro
+    command: ["lnd", "--lnddir=/data", "--configfile=/config/lnd.conf"]
+    ports:
+      - "10009:10009"
+      - "8080:8080"
+      - "9735:9735"
+    restart: unless-stopped
+
+  lnd-core-29-2:
+    image: lightninglabs/lnd:${LND_VERSION}
+    container_name: lnd-core-29-2
+    depends_on:
+      - core-29-2
+    volumes:
+      - lnd-core-29-2-data:/data
+      - ./config/lnd/core-29-2:/config:ro
+    command: ["lnd", "--lnddir=/data", "--configfile=/config/lnd.conf"]
+    ports:
+      - "11009:10009"
+      - "18080:8080"
+      - "19735:9735"
+    restart: unless-stopped
+
+  lnd-knots-29-1-20250903:
+    image: lightninglabs/lnd:${LND_VERSION}
+    container_name: lnd-knots-29-1-20250903
+    depends_on:
+      - knots-29-1-20250903
+    volumes:
+      - lnd-knots-29-1-20250903-data:/data
+      - ./config/lnd/knots-29-1-20250903:/config:ro
+    command: ["lnd", "--lnddir=/data", "--configfile=/config/lnd.conf"]
+    ports:
+      - "12009:10009"
+      - "28080:8080"
+      - "29735:9735"
+    restart: unless-stopped
+
+volumes:
+  core-30-2-data:
+  core-29-2-data:
+  core-29-0-data:
+  core-28-1-data:
+  core-27-1-data:
+  core-27-0-data:
+  core-26-0-data:
+  core-25-1-data:
+  knots-29-2-20251110-data:
+  knots-29-1-20250903-data:
+  knots-28-1-20250305-data:
+  lnd-core-30-2-data:
+  lnd-core-29-2-data:
+  lnd-knots-29-1-20250903-data:
