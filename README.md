@@ -46,7 +46,7 @@ docker compose up -d lnd-core-30-2 lnd-core-29-2 lnd-knots-29-1-20250903
 ```bash
 # Core 30.2
 
-docker compose exec core-30-2 bitcoin-cli -regtest -rpcuser=bitcoin -rpcpassword=bitcoin -rpcport=18443 getblockchaininfo
+docker compose exec core-30-2 bitcoin-cli -regtest -rpcuser=bitcoin -rpcpassword=bitcoin -rpcport=18465 getblockchaininfo
 
 # Knots 29.2
 
@@ -63,7 +63,7 @@ docker compose exec lnd-knots-29-1-20250903 lncli --network=regtest getinfo
 
 ## 포트 매핑
 
-- core-30-2: RPC 18443 / P2P 18444
+- core-30-2: RPC 18465 / P2P 18466
 - core-29-2: RPC 18445 / P2P 18446
 - core-29-0: RPC 18447 / P2P 18448
 - core-28-1: RPC 18449 / P2P 18450

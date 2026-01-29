@@ -11,10 +11,10 @@ services:
       - core-30-2-data:/data
       - ./config/core:/config:ro
     environment:
-      BITCOIN_ARGS: "-rpcport=18443 -port=18444 -zmqpubrawblock=tcp://0.0.0.0:28332 -zmqpubrawtx=tcp://0.0.0.0:28333"
+      BITCOIN_ARGS: "-rpcport=18465 -port=18466 -zmqpubrawblock=tcp://0.0.0.0:28332 -zmqpubrawtx=tcp://0.0.0.0:28333"
     ports:
-      - "18443:18443"
-      - "18444:18444"
+      - "18465:18465"
+      - "18466:18466"
     restart: unless-stopped
 
   core-29-2:
@@ -29,7 +29,7 @@ services:
       - core-29-2-data:/data
       - ./config/core:/config:ro
     environment:
-      BITCOIN_ARGS: "-rpcport=18445 -port=18446 -addnode=core-30-2:18444 -zmqpubrawblock=tcp://0.0.0.0:28332 -zmqpubrawtx=tcp://0.0.0.0:28333"
+      BITCOIN_ARGS: "-rpcport=18445 -port=18446 -addnode=core-30-2:18466 -zmqpubrawblock=tcp://0.0.0.0:28332 -zmqpubrawtx=tcp://0.0.0.0:28333"
     ports:
       - "18445:18445"
       - "18446:18446"
@@ -47,7 +47,7 @@ services:
       - core-29-0-data:/data
       - ./config/core:/config:ro
     environment:
-      BITCOIN_ARGS: "-rpcport=18447 -port=18448 -addnode=core-30-2:18444"
+      BITCOIN_ARGS: "-rpcport=18447 -port=18448 -addnode=core-30-2:18466"
     ports:
       - "18447:18447"
       - "18448:18448"
@@ -65,7 +65,7 @@ services:
       - core-28-1-data:/data
       - ./config/core:/config:ro
     environment:
-      BITCOIN_ARGS: "-rpcport=18449 -port=18450 -addnode=core-30-2:18444"
+      BITCOIN_ARGS: "-rpcport=18449 -port=18450 -addnode=core-30-2:18466"
     ports:
       - "18449:18449"
       - "18450:18450"
@@ -83,7 +83,7 @@ services:
       - core-27-1-data:/data
       - ./config/core:/config:ro
     environment:
-      BITCOIN_ARGS: "-rpcport=18451 -port=18452 -addnode=core-30-2:18444"
+      BITCOIN_ARGS: "-rpcport=18451 -port=18452 -addnode=core-30-2:18466"
     ports:
       - "18451:18451"
       - "18452:18452"
@@ -101,7 +101,7 @@ services:
       - core-27-0-data:/data
       - ./config/core:/config:ro
     environment:
-      BITCOIN_ARGS: "-rpcport=18453 -port=18454 -addnode=core-30-2:18444"
+      BITCOIN_ARGS: "-rpcport=18453 -port=18454 -addnode=core-30-2:18466"
     ports:
       - "18453:18453"
       - "18454:18454"
@@ -119,7 +119,7 @@ services:
       - core-26-0-data:/data
       - ./config/core:/config:ro
     environment:
-      BITCOIN_ARGS: "-rpcport=18455 -port=18456 -addnode=core-30-2:18444"
+      BITCOIN_ARGS: "-rpcport=18455 -port=18456 -addnode=core-30-2:18466"
     ports:
       - "18455:18455"
       - "18456:18456"
@@ -137,7 +137,7 @@ services:
       - core-25-1-data:/data
       - ./config/core:/config:ro
     environment:
-      BITCOIN_ARGS: "-rpcport=18457 -port=18458 -addnode=core-30-2:18444"
+      BITCOIN_ARGS: "-rpcport=18457 -port=18458 -addnode=core-30-2:18466"
     ports:
       - "18457:18457"
       - "18458:18458"
@@ -155,7 +155,7 @@ services:
       - knots-29-2-20251110-data:/data
       - ./config/knots:/config:ro
     environment:
-      BITCOIN_ARGS: "-rpcport=18459 -port=18460 -addnode=core-30-2:18444"
+      BITCOIN_ARGS: "-rpcport=18459 -port=18460 -addnode=core-30-2:18466"
     ports:
       - "18459:18459"
       - "18460:18460"
@@ -173,7 +173,7 @@ services:
       - knots-29-1-20250903-data:/data
       - ./config/knots:/config:ro
     environment:
-      BITCOIN_ARGS: "-rpcport=18461 -port=18462 -addnode=core-30-2:18444 -zmqpubrawblock=tcp://0.0.0.0:28332 -zmqpubrawtx=tcp://0.0.0.0:28333"
+      BITCOIN_ARGS: "-rpcport=18461 -port=18462 -addnode=core-30-2:18466 -zmqpubrawblock=tcp://0.0.0.0:28332 -zmqpubrawtx=tcp://0.0.0.0:28333"
     ports:
       - "18461:18461"
       - "18462:18462"
@@ -191,7 +191,7 @@ services:
       - knots-28-1-20250305-data:/data
       - ./config/knots:/config:ro
     environment:
-      BITCOIN_ARGS: "-rpcport=18463 -port=18464 -addnode=core-30-2:18444"
+      BITCOIN_ARGS: "-rpcport=18463 -port=18464 -addnode=core-30-2:18466"
     ports:
       - "18463:18463"
       - "18464:18464"
@@ -207,9 +207,9 @@ services:
       - ./config/lnd/core-30-2:/config:ro
     command: ["lnd", "--lnddir=/data", "--configfile=/config/lnd.conf"]
     ports:
-      - "10009:10009"
-      - "8080:8080"
-      - "9735:9735"
+      - "11009:10009"
+      - "18080:8080"
+      - "19735:9735"
     restart: unless-stopped
 
   lnd-core-29-2:
@@ -222,9 +222,9 @@ services:
       - ./config/lnd/core-29-2:/config:ro
     command: ["lnd", "--lnddir=/data", "--configfile=/config/lnd.conf"]
     ports:
-      - "11009:10009"
-      - "18080:8080"
-      - "19735:9735"
+      - "12009:10009"
+      - "28080:8080"
+      - "29735:9735"
     restart: unless-stopped
 
   lnd-knots-29-1-20250903:
@@ -237,9 +237,9 @@ services:
       - ./config/lnd/knots-29-1-20250903:/config:ro
     command: ["lnd", "--lnddir=/data", "--configfile=/config/lnd.conf"]
     ports:
-      - "12009:10009"
-      - "28080:8080"
-      - "29735:9735"
+      - "13009:10009"
+      - "38080:8080"
+      - "39735:9735"
     restart: unless-stopped
 
 volumes:
